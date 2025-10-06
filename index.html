@@ -34,6 +34,42 @@
             --table-stripe: #303040;
         }
 
+        @keyframes gradientShift {
+            0% {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            }
+            25% {
+                background: linear-gradient(135deg, #764ba2 0%, #f093fb 100%);
+            }
+            50% {
+                background: linear-gradient(135deg, #f093fb 0%, #4facfe 100%);
+            }
+            75% {
+                background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            }
+            100% {
+                background: linear-gradient(135deg, #00f2fe 0%, #667eea 100%);
+            }
+        }
+
+        [data-theme="dark"] @keyframes gradientShift {
+            0% {
+                background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            }
+            25% {
+                background: linear-gradient(135deg, #16213e 0%, #0f3460 100%);
+            }
+            50% {
+                background: linear-gradient(135deg, #0f3460 0%, #16537e 100%);
+            }
+            75% {
+                background: linear-gradient(135deg, #16537e 0%, #1a1a2e 100%);
+            }
+            100% {
+                background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            }
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -45,8 +81,14 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: var(--text-primary);
-            background: var(--bg-primary);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 20s ease infinite;
             min-height: 100vh;
+        }
+        
+        [data-theme="dark"] body {
+            animation: gradientShift 25s ease infinite;
         }
         
         .container {
@@ -69,7 +111,6 @@
             position: relative;
         }
 
-        /* Theme Toggle Button */
         .theme-toggle {
             position: absolute;
             top: 20px;
@@ -187,7 +228,6 @@
             padding-left: 10px;
         }
         
-        /* Collapsible Section Styles */
         .section {
             margin-bottom: 30px;
             border: 1px solid var(--border-color);
@@ -256,7 +296,6 @@
             transform: translateY(-10px);
         }
         
-        /* Expand/Collapse All Controls */
         .section-controls {
             text-align: center;
             margin-bottom: 30px;
@@ -603,7 +642,6 @@
             scroll-behavior: smooth;
         }
         
-        /* Back to Top Button */
         .back-to-top {
             position: fixed;
             bottom: 30px;
@@ -638,12 +676,62 @@
         .back-to-top:active {
             transform: translateY(0);
         }
+        
+        .cursor-trail {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: screen;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .cursor-trail.active {
+            opacity: 0.6;
+            animation: cursorPulse 1s ease-out forwards;
+        }
+        
+        @keyframes cursorPulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.6;
+            }
+            100% {
+                transform: scale(3);
+                opacity: 0;
+            }
+        }
+        
+        .mouse-glow {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.15) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            transition: opacity 0.3s ease;
+            opacity: 0;
+        }
+        
+        [data-theme="dark"] .mouse-glow {
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.25) 0%, transparent 70%);
+        }
+        
+        body:hover .mouse-glow {
+            opacity: 1;
+        }
     </style>
 </head>
 <body class="smooth-scroll">
+    <div class="mouse-glow" id="mouseGlow"></div>
+    
     <div class="container">
         <div class="header">
-            <!-- Theme Toggle Button -->
             <button class="theme-toggle" onclick="toggleTheme()" title="Toggle day/night theme">
                 <div class="theme-toggle-slider"></div>
             </button>
@@ -685,13 +773,11 @@
                 </ul>
             </div>
 
-            <!-- Section Controls -->
             <div class="section-controls">
                 <button class="control-btn" onclick="expandAllSections()">📖 Expand All</button>
                 <button class="control-btn" onclick="collapseAllSections()">📕 Collapse All</button>
             </div>
 
-            <!-- Section 1: Project Goal & Description -->
             <div class="section" id="title-description">
                 <div class="section-header" onclick="toggleSection('title-description')">
                     <div class="section-header-left">
@@ -705,15 +791,14 @@
                         <h3>I.T Help Desk Ticketing System</h3>
                     </div>
                     <div class="project-description">
-                        Project Goal: Land an entry level I.T Help Desk role by building hands-on ticketing systems. Throughtout this hands-on project will allows me to 
+                        Project Goal: Land an entry level I.T Help Desk role by building hands-on ticketing systems. Throughout this hands-on project will allow me to 
                         understand the complete lifecycle of support system tickets. A simple web application where students and staff can submit technical problems, 
                         and I.T staff can update and close tickets.
                     </div>
                 </div>
             </div>
 
-            <!-- Section 2: Vision, Mission & Strategy Alignment -->
-            <div class="section" id="vision-mission">
+            <div class="section collapsed" id="vision-mission">
                 <div class="section-header" onclick="toggleSection('vision-mission')">
                     <div class="section-header-left">
                         <span class="section-icon">🎯</span>
@@ -725,11 +810,11 @@
                     <div class="vision-grid">
                         <div class="vision-card">
                             <h3>Personal Mission Connection</h3>
-                            <p>To make technology easier for people so they focus on what matters most .</p>
+                            <p>To make technology easier for people so they focus on what matters most.</p>
                         </div>
                         <div class="vision-card">
                             <h3>Vision Alignment</h3>
-                            <p>In the next 3–5 years, I see myself analysing complex problem and organize solution that directly enhance a company or organization. My vision is to become a trusted technology professional who helps organizations stay resilient while continuing to grow my expertise in technology.</p>
+                            <p>In the next 3–5 years, I see myself analyzing complex problems and organizing solutions that directly enhance a company or organization. My vision is to become a trusted technology professional who helps organizations stay resilient while continuing to grow my expertise in technology.</p>
                         </div>
                         <div class="vision-card">
                             <h3>Strategic Goal Support</h3>
@@ -739,8 +824,7 @@
                 </div>
             </div>
 
-            <!-- Section 3: Business Case & Justification -->
-            <div class="section" id="business-case">
+            <div class="section collapsed" id="business-case">
                 <div class="section-header" onclick="toggleSection('business-case')">
                     <div class="section-header-left">
                         <span class="section-icon">💼</span>
@@ -766,8 +850,7 @@
                 </div>
             </div>
 
-            <!-- Section 4: High-Level Scope -->
-            <div class="section" id="scope">
+            <div class="section collapsed" id="scope">
                 <div class="section-header" onclick="toggleSection('scope')">
                     <div class="section-header-left">
                         <span class="section-icon">🔍</span>
@@ -809,8 +892,7 @@
                 </div>
             </div>
 
-            <!-- Section 5: Stakeholder Register -->
-            <div class="section" id="stakeholders">
+            <div class="section collapsed" id="stakeholders">
                 <div class="section-header" onclick="toggleSection('stakeholders')">
                     <div class="section-header-left">
                         <span class="section-icon">👥</span>
@@ -838,7 +920,7 @@
                                 <td>Primary end users who need accessible technical information</td>
                                 <td class="power-medium">MEDIUM</td>
                                 <td class="power-high">HIGH</td>
-                                <td>Keep Informed – Regular feedback sessions, usability testing, training</td>
+                                <td>Keep Informed — Regular feedback sessions, usability testing, training</td>
                             </tr>
                             <tr>
                                 <td><strong>CFO</strong></td>
@@ -846,7 +928,7 @@
                                 <td>Project sponsor seeking improved customer service efficiency</td>
                                 <td class="power-high">HIGH</td>
                                 <td class="power-high">HIGH</td>
-                                <td>Manage Closely – Weekly meetings, milestone approvals, budget decisions</td>
+                                <td>Manage Closely — Weekly meetings, milestone approvals, budget decisions</td>
                             </tr>
                             <tr>
                                 <td><strong>End Users</strong></td>
@@ -854,7 +936,7 @@
                                 <td>Provide source content and validate accuracy of simplified information</td>
                                 <td class="power-medium">MEDIUM</td>
                                 <td class="power-medium">MEDIUM</td>
-                                <td>Keep Informed – Content reviews, accuracy validation, ongoing consultation</td>
+                                <td>Keep Informed — Content reviews, accuracy validation, ongoing consultation</td>
                             </tr>
                             <tr>
                                 <td><strong>I.T Manager</strong></td>
@@ -862,7 +944,7 @@
                                 <td>Manages SharePoint platform, permissions, and technical setup</td>
                                 <td class="power-high">HIGH</td>
                                 <td class="power-medium">MEDIUM</td>
-                                <td>Keep Satisfied – Technical requirements, permission setup, maintenance planning</td>
+                                <td>Keep Satisfied — Technical requirements, permission setup, maintenance planning</td>
                             </tr>
                             <tr>
                                 <td><strong>I.T Supervisor</strong></td>
@@ -870,7 +952,7 @@
                                 <td>Oversees CS team performance and training requirements</td>
                                 <td class="power-high">HIGH</td>
                                 <td class="power-high">HIGH</td>
-                                <td>Manage Closely – Training plans, performance impact assessment, rollout strategy</td>
+                                <td>Manage Closely — Training plans, performance impact assessment, rollout strategy</td>
                             </tr>
                             <tr>
                                 <td><strong>Software Developer</strong></td>
@@ -878,7 +960,7 @@
                                 <td>Responsible for building and customizing the SharePoint site</td>
                                 <td class="power-medium">MEDIUM</td>
                                 <td class="power-medium">MEDIUM</td>
-                                <td>Keep Informed – Technical requirements, design specifications, testing feedback</td>
+                                <td>Keep Informed — Technical requirements, design specifications, testing feedback</td>
                             </tr>
                             <tr>
                                 <td><strong>Project Sponsor</strong></td>
@@ -886,15 +968,14 @@
                                 <td>Senior leader overseeing department operations and project outcomes</td>
                                 <td class="power-high">HIGH</td>
                                 <td class="power-low">LOW</td>
-                                <td>Keep Satisfied – Executive summaries, major milestone updates, budget impacts</td>
+                                <td>Keep Satisfied — Executive summaries, major milestone updates, budget impacts</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
 
-            <!-- Section 6: Deliverables & Definition of Done -->
-            <div class="section" id="deliverables">
+            <div class="section collapsed" id="deliverables">
                 <div class="section-header" onclick="toggleSection('deliverables')">
                     <div class="section-header-left">
                         <span class="section-icon">📦</span>
@@ -948,8 +1029,7 @@
                 </div>
             </div>
 
-            <!-- Section 7: Work Breakdown Structure -->
-            <div class="section" id="wbs">
+            <div class="section collapsed" id="wbs">
                 <div class="section-header" onclick="toggleSection('wbs')">
                     <div class="section-header-left">
                         <span class="section-icon">🗂️</span>
@@ -1054,7 +1134,6 @@
                                     <td>0.5</td>
                                     <td>1.1.9 - Ticket lifecycle & status</td>
                                 </tr>
-                                <!-- Database Design Section -->
                                 <tr class="wbs-deliverable">
                                     <td>2</td>
                                     <td>Deliverable</td>
@@ -1132,8 +1211,6 @@
                                     <td>1.0</td>
                                     <td>2.1.8 - Finalize ER diagram</td>
                                 </tr>
-                                
-                                <!-- Ticketing System Prototype Section -->
                                 <tr class="wbs-deliverable">
                                     <td>3</td>
                                     <td>Deliverable</td>
@@ -1218,8 +1295,6 @@
                                     <td>0.5</td>
                                     <td>3.1.9 - Prototype testing</td>
                                 </tr>
-                                
-                                <!-- System Testing Section -->
                                 <tr class="wbs-deliverable">
                                     <td>4</td>
                                     <td>Deliverable</td>
@@ -1297,8 +1372,6 @@
                                     <td>1.0</td>
                                     <td>4.1.8 - Document functionality & performance test report</td>
                                 </tr>
-                                
-                                <!-- Deployment Section -->
                                 <tr class="wbs-deliverable">
                                     <td>5</td>
                                     <td>Deliverable</td>
@@ -1368,8 +1441,7 @@
                 </div>
             </div>
 
-            <!-- Section 8: Project Budget -->
-            <div class="section" id="budget">
+            <div class="section collapsed" id="budget">
                 <div class="section-header" onclick="toggleSection('budget')">
                     <div class="section-header-left">
                         <span class="section-icon">💰</span>
@@ -1378,8 +1450,6 @@
                     <span class="toggle-icon">▼</span>
                 </div>
                 <div class="section-content">
-                    
-                    <!-- Labor Costs Section -->
                     <div class="budget-section">
                         <h3 style="color: #2c3e50; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #3498db;">👥 Labor Costs</h3>
                         <div class="budget-table-container">
@@ -1441,7 +1511,6 @@
                         </div>
                     </div>
 
-                    <!-- Non-Labor Costs Section -->
                     <div class="budget-section" style="margin-top: 40px;">
                         <h3 style="color: #2c3e50; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #e74c3c;">💻 Non-Labor Costs</h3>
                         <div class="budget-table-container">
@@ -1449,7 +1518,8 @@
                                 <thead>
                                     <tr>
                                         <th>Category</th>
-                                        <th>Item</th>
+                                        <th>
+                                            <th>Item</th>
                                         <th>Estimated Cost</th>
                                         <th>Notes</th>
                                     </tr>
@@ -1504,7 +1574,6 @@
                         </div>
                     </div>
 
-                    <!-- Budget Summary -->
                     <div class="budget-summary" style="margin-top: 40px;">
                         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px;">
                             <div class="budget-total-card" style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 30px; border-radius: 15px; text-align: center;">
@@ -1541,8 +1610,7 @@
                 </div>
             </div>
 
-            <!-- Section 9: Project Methodology -->
-            <div class="section" id="methodology">
+            <div class="section collapsed" id="methodology">
                 <div class="section-header" onclick="toggleSection('methodology')">
                     <div class="section-header-left">
                         <span class="section-icon">🛠️</span>
@@ -1570,7 +1638,6 @@
                             <strong>📋 Predictive Methodology Diagram</strong><br>
                             <div style="margin: 20px 0;">
                                 <svg width="100%" height="320" viewBox="0 0 800 320" style="max-width: 800px; background: white; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-                                    <!-- Grid background -->
                                     <defs>
                                         <pattern id="grid" width="15" height="15" patternUnits="userSpaceOnUse">
                                             <path d="M 15 0 L 0 0 0 15" fill="none" stroke="#f0f0f0" stroke-width="0.5"/>
@@ -1578,28 +1645,21 @@
                                     </defs>
                                     <rect width="800" height="320" fill="url(#grid)"/>
                                     
-                                    <!-- Title -->
                                     <rect x="300" y="15" width="200" height="25" rx="5" fill="none" stroke="#666" stroke-width="1.5"/>
                                     <text x="400" y="32" text-anchor="middle" font-size="14" font-weight="bold" fill="#666">Predictive Methodology</text>
                                     
-                                    <!-- Main phases - properly centered and aligned -->
-                                    <!-- Plan Phase -->
                                     <rect x="60" y="60" width="120" height="35" rx="5" fill="#c8e6c9" stroke="#4caf50" stroke-width="1.5"/>
                                     <text x="120" y="82" text-anchor="middle" font-size="14" font-weight="bold" fill="#2e7d32">Plan</text>
                                     
-                                    <!-- Execute Phase -->
                                     <rect x="210" y="60" width="120" height="35" rx="5" fill="#bbdefb" stroke="#2196f3" stroke-width="1.5"/>
                                     <text x="270" y="82" text-anchor="middle" font-size="14" font-weight="bold" fill="#1565c0">Execute</text>
                                     
-                                    <!-- Test Phase -->
                                     <rect x="360" y="60" width="120" height="35" rx="5" fill="#fff3c4" stroke="#ff9800" stroke-width="1.5"/>
                                     <text x="420" y="82" text-anchor="middle" font-size="14" font-weight="bold" fill="#e65100">Test</text>
                                     
-                                    <!-- Deliver Phase -->
                                     <rect x="510" y="60" width="120" height="35" rx="5" fill="#f8bbd9" stroke="#e91e63" stroke-width="1.5"/>
                                     <text x="570" y="82" text-anchor="middle" font-size="14" font-weight="bold" fill="#ad1457">Deliver</text>
                                     
-                                    <!-- Sub-activities for Plan - properly aligned under Plan box -->
                                     <rect x="30" y="115" width="65" height="20" rx="3" fill="#e8f5e8" stroke="#4caf50" stroke-width="1"/>
                                     <text x="62" y="128" text-anchor="middle" font-size="8" fill="#2e7d32">Initiation</text>
                                     
@@ -1615,7 +1675,6 @@
                                     <rect x="67" y="175" width="96" height="20" rx="3" fill="#e8f5e8" stroke="#4caf50" stroke-width="1"/>
                                     <text x="115" y="188" text-anchor="middle" font-size="7" fill="#2e7d32">Select functional Requirements</text>
                                     
-                                    <!-- Sub-activities for Execute - aligned under Execute box -->
                                     <rect x="180" y="115" width="65" height="20" rx="3" fill="#e3f2fd" stroke="#2196f3" stroke-width="1"/>
                                     <text x="212" y="128" text-anchor="middle" font-size="8" fill="#1565c0">Database Design</text>
                                     
@@ -1628,32 +1687,27 @@
                                     <rect x="255" y="145" width="65" height="20" rx="3" fill="#e3f2fd" stroke="#2196f3" stroke-width="1"/>
                                     <text x="287" y="158" text-anchor="middle" font-size="8" fill="#1565c0">System Prototype</text>
                                     
-                                    <!-- Sub-activities for Test - aligned under Test box -->
                                     <rect x="330" y="115" width="65" height="20" rx="3" fill="#fff8e1" stroke="#ff9800" stroke-width="1"/>
-                                    <text x="362" y="128" text-anchor="middle" font-size="8" fill="#e65100">agile test</text>
+                                    <text x="362" y="128" text-anchor="middle" font-size="8" fill="#e65100">Agile Test</text>
                                     
                                     <rect x="405" y="115" width="65" height="20" rx="3" fill="#fff8e1" stroke="#ff9800" stroke-width="1"/>
-                                    <text x="437" y="128" text-anchor="middle" font-size="8" fill="#e65100">Fix any bugs</text>
+                                    <text x="437" y="128" text-anchor="middle" font-size="8" fill="#e65100">Fix Any Bugs</text>
                                     
                                     <rect x="367" y="145" width="66" height="20" rx="3" fill="#fff8e1" stroke="#ff9800" stroke-width="1"/>
-                                    <text x="400" y="158" text-anchor="middle" font-size="8" fill="#e65100">successfully</text>
+                                    <text x="400" y="158" text-anchor="middle" font-size="8" fill="#e65100">Successfully</text>
                                     
                                     <rect x="367" y="175" width="66" height="20" rx="3" fill="#fff8e1" stroke="#ff9800" stroke-width="1"/>
-                                    <text x="400" y="188" text-anchor="middle" font-size="7" fill="#e65100">90% cases pass</text>
+                                    <text x="400" y="188" text-anchor="middle" font-size="7" fill="#e65100">90% Cases Pass</text>
                                     
-                                    <!-- Sub-activities for Deliver - aligned under Deliver box -->
                                     <rect x="480" y="115" width="75" height="20" rx="3" fill="#fce4ec" stroke="#e91e63" stroke-width="1"/>
-                                    <text x="517" y="128" text-anchor="middle" font-size="8" fill="#ad1457">deploy application</text>
+                                    <text x="517" y="128" text-anchor="middle" font-size="8" fill="#ad1457">Deploy Application</text>
                                     
                                     <rect x="565" y="115" width="75" height="20" rx="3" fill="#fce4ec" stroke="#e91e63" stroke-width="1"/>
-                                    <text x="602" y="128" text-anchor="middle" font-size="7" fill="#ad1457">Feedback or application</text>
+                                    <text x="602" y="128" text-anchor="middle" font-size="7" fill="#ad1457">Feedback</text>
                                     
-                                    <!-- Timeline boxes - properly spaced and aligned -->
-                                    <!-- September -->
                                     <rect x="60" y="220" width="120" height="40" rx="5" fill="none" stroke="#666" stroke-width="1.5"/>
                                     <text x="120" y="258" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">September</text>
                                     
-                                    <!-- Week boxes for September -->
                                     <rect x="70" y="228" width="20" height="15" rx="2" fill="#e0e0e0" stroke="#666" stroke-width="0.5"/>
                                     <text x="80" y="238" text-anchor="middle" font-size="8" fill="#333">W1</text>
                                     
@@ -1666,11 +1720,9 @@
                                     <rect x="145" y="228" width="20" height="15" rx="2" fill="#e0e0e0" stroke="#666" stroke-width="0.5"/>
                                     <text x="155" y="238" text-anchor="middle" font-size="8" fill="#333">W4</text>
                                     
-                                    <!-- October -->
                                     <rect x="210" y="220" width="120" height="40" rx="5" fill="none" stroke="#666" stroke-width="1.5"/>
                                     <text x="270" y="258" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">October</text>
                                     
-                                    <!-- Week boxes for October -->
                                     <rect x="220" y="228" width="20" height="15" rx="2" fill="#e0e0e0" stroke="#666" stroke-width="0.5"/>
                                     <text x="230" y="238" text-anchor="middle" font-size="8" fill="#333">W5</text>
                                     
@@ -1683,11 +1735,9 @@
                                     <rect x="295" y="228" width="20" height="15" rx="2" fill="#e0e0e0" stroke="#666" stroke-width="0.5"/>
                                     <text x="305" y="238" text-anchor="middle" font-size="8" fill="#333">W8</text>
                                     
-                                    <!-- November -->
                                     <rect x="380" y="220" width="220" height="40" rx="5" fill="none" stroke="#666" stroke-width="1.5"/>
                                     <text x="490" y="258" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">November</text>
                                     
-                                    <!-- Week boxes for November -->
                                     <rect x="395" y="228" width="25" height="15" rx="2" fill="#e0e0e0" stroke="#666" stroke-width="0.5"/>
                                     <text x="407" y="238" text-anchor="middle" font-size="8" fill="#333">W9</text>
                                     
@@ -1707,8 +1757,7 @@
                 </div>
             </div>
 
-            <!-- Section 10: Project Tool Selection -->
-            <div class="section" id="tools">
+            <div class="section collapsed" id="tools">
                 <div class="section-header" onclick="toggleSection('tools')">
                     <div class="section-header-left">
                         <span class="section-icon">🛠️</span>
@@ -1760,177 +1809,88 @@
                                         <tr style="background: #f8f9fa;">
                                             <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Week 1</td>
                                             <td style="padding: 8px 12px; border-bottom: 1px solid #eee; background: #e8f5e8;">Initiation</td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Task</td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Dependencies</td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Assigned Task</td>
-                                        </tr>
-                                        <tr>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee; background: #e8f5e8;">Plan</td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
+                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Project kickoff</td>
+                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">—</td>
                                             <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Project Manager</td>
                                         </tr>
-                                        <tr style="background: #f8f9fa;">
+                                        <tr>
                                             <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Week 2</td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
+                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee; background: #e8f5e8;">Plan</td>
                                             <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Research system requirements</td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                        </tr>
-                                        <tr>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Week 3</td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Gather requirements</td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
+                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Week 1</td>
+                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Business Analyst</td>
                                         </tr>
                                         <tr style="background: #f8f9fa;">
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Week 4</td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Select functional requirements</td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
+                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Week 3</td>
+                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee; background: #e8f5e8;">Plan</td>
+                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Gather requirements</td>
+                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Week 2</td>
+                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Business Analyst</td>
                                         </tr>
                                         <tr>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee; background: #e3f2fd;">Execute</td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
+                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Week 4</td>
+                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee; background: #e8f5e8;">Plan</td>
+                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Select functional requirements</td>
+                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Week 3</td>
+                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Business Analyst</td>
                                         </tr>
                                         <tr style="background: #f8f9fa;">
                                             <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Week 5</td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Database Design</td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Week 1-4 Planning phase</td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Database Architect</td>
-                                        </tr>
-                                        <tr>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Identify core entities</td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Database Architect</td>
-                                        </tr>
-                                        <tr style="background: #f8f9fa;">
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Define primary keys</td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Database Architect</td>
+                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee; background: #e3f2fd;">Execute</td>
+                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Database Design - Identify core entities</td>
+                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Week 1-4</td>
+                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Developer</td>
                                         </tr>
                                         <tr>
                                             <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Week 6</td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Define foreign keys</td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Database Architect</td>
-                                        </tr>
-                                        <tr style="background: #f8f9fa;">
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
+                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee; background: #e3f2fd;">Execute</td>
                                             <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Establish relationships</td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Database Architect</td>
+                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Week 5</td>
+                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Developer</td>
                                         </tr>
-                                        <tr>
+                                        <tr style="background: #f8f9fa;">
                                             <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Week 7</td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Draw ER diagram</td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Developer</td>
-                                        </tr>
-                                        <tr style="background: #f8f9fa;">
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Design ticket form</td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
+                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee; background: #e3f2fd;">Execute</td>
+                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Draw ER diagram & design ticket form</td>
+                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Week 6</td>
                                             <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Developer</td>
                                         </tr>
                                         <tr>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Enable ticket status updates</td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Developer</td>
-                                        </tr>
-                                        <tr style="background: #f8f9fa;">
                                             <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Week 8</td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Run code without errors</td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                        </tr>
-                                        <tr>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee; background: #fff8e1;">Testing</td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
+                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee; background: #e3f2fd;">Execute</td>
+                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Enable ticket status updates & run code without errors</td>
+                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Week 7</td>
+                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Developer</td>
                                         </tr>
                                         <tr style="background: #f8f9fa;">
                                             <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Week 9</td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Execute test</td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Week 5-8 Database designing phase</td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Developer</td>
-                                        </tr>
-                                        <tr>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Document test results</td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Developer</td>
-                                        </tr>
-                                        <tr style="background: #f8f9fa;">
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Fix bugs & retest</td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
+                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee; background: #fff8e1;">Testing</td>
+                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Execute tests & document results</td>
+                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Week 5-8</td>
                                             <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Developer</td>
                                         </tr>
                                         <tr>
                                             <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Week 10</td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">90% of test cases pass successfully</td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
+                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee
+                                                ;">Week 10</td>
+                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee; background: #fff8e1;">Testing</td>
+                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Fix bugs & retest - 90% test cases pass</td>
+                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Week 9</td>
+                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Developer</td>
                                         </tr>
                                         <tr style="background: #f8f9fa;">
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee; background: #fce4ec;">Deploy</td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                        </tr>
-                                        <tr>
                                             <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Week 11</td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Set up hosting platform - Github</td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Week 9-10 Testing phase</td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">DevOps</td>
-                                        </tr>
-                                        <tr style="background: #f8f9fa;">
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Deploy application code</td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
+                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee; background: #fce4ec;">Deploy</td>
+                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Set up hosting platform & deploy application code</td>
+                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Week 9-10</td>
                                             <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">DevOps</td>
                                         </tr>
                                         <tr>
                                             <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Week 12</td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Publish page</td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">DevOps</td>
-                                        </tr>
-                                        <tr style="background: #f8f9fa;">
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Feedbacks of application</td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;"></td>
-                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Users</td>
+                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee; background: #fce4ec;">Deploy</td>
+                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Publish page & collect feedback</td>
+                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">Week 11</td>
+                                            <td style="padding: 8px 12px; border-bottom: 1px solid #eee;">All Team</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -1941,8 +1901,7 @@
                 </div>
             </div>
 
-            <!-- Section 11: Additional Charter Components -->
-            <div class="section" id="additional">
+            <div class="section collapsed" id="additional">
                 <div class="section-header" onclick="toggleSection('additional')">
                     <div class="section-header-left">
                         <span class="section-icon">📝</span>
@@ -1972,29 +1931,24 @@
         </div>
     </div>
 
-    <!-- Back to Top Button -->
     <button class="back-to-top" id="backToTop" onclick="scrollToTop()" title="Back to top">
         ↑
     </button>
 
     <script>
-        // Theme switching functionality
         function toggleTheme() {
             const html = document.documentElement;
             const currentTheme = html.getAttribute('data-theme');
             const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            
             html.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
         }
 
-        // Load saved theme on page load
         document.addEventListener('DOMContentLoaded', function() {
             const savedTheme = localStorage.getItem('theme') || 'light';
             document.documentElement.setAttribute('data-theme', savedTheme);
         });
 
-        // Collapsible section functionality
         function toggleSection(sectionId) {
             const section = document.getElementById(sectionId);
             section.classList.toggle('collapsed');
@@ -2014,112 +1968,20 @@
             });
         }
 
-        // Add budget data loading functionality
-        document.addEventListener('DOMContentLoaded', async function() {
-            try {
-                // Read the Excel file
-                const fileData = await window.fs.readFile('Project Budget.xlsx');
-                const workbook = XLSX.read(fileData, { type: 'array' });
-                
-                // Get the first worksheet
-                const worksheetName = workbook.SheetNames[0];
-                const worksheet = workbook.Sheets[worksheetName];
-                
-                // Convert to JSON
-                const budgetData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
-                
-                // Process and display the budget data
-                displayBudgetData(budgetData);
-                
-            } catch (error) {
-                console.error('Error loading budget data:', error);
-                displayDefaultBudget();
-            }
-        });
-        
-        function displayBudgetData(data) {
-            const budgetContent = document.getElementById('budget-content');
-            const budgetLoading = document.getElementById('budget-loading');
-            
-            let html = '<div class="budget-table-container">';
-            html += '<table class="budget-table">';
-            
-            // Process the data rows
-            data.forEach((row, index) => {
-                if (index === 0) {
-                    // Header row
-                    html += '<thead><tr>';
-                    row.forEach(cell => {
-                        html += `<th>${cell || ''}</th>`;
-                    });
-                    html += '</tr></thead><tbody>';
-                } else if (row.some(cell => cell !== undefined && cell !== '')) {
-                    // Data rows (only if not empty)
-                    html += '<tr>';
-                    row.forEach(cell => {
-                        const cellValue = cell || '';
-                        // Format currency if it looks like a number
-                        const formattedValue = typeof cellValue === 'number' && cellValue > 0 
-                            ? `${cellValue.toLocaleString()}` 
-                            : cellValue;
-                        html += `<td>${formattedValue}</td>`;
-                    });
-                    html += '</tr>';
-                }
-            });
-            
-            html += '</tbody></table></div>';
-            
-            budgetContent.innerHTML = html;
-            budgetLoading.style.display = 'none';
-            budgetContent.style.display = 'block';
-        }
-        
-        function displayDefaultBudget() {
-            const budgetContent = document.getElementById('budget-content');
-            const budgetLoading = document.getElementById('budget-loading');
-            
-            budgetContent.innerHTML = `
-                <div style="background: #f8f9fa; padding: 30px; border-radius: 15px; text-align: center; border: 2px dashed #dee2e6;">
-                    <h3 style="color: #6c757d; margin-bottom: 15px;">📊 Project Budget</h3>
-                    <p style="color: #6c757d; font-style: italic;">Budget data from Project Budget.xlsx could not be loaded</p>
-                    <div style="background: white; padding: 40px; margin: 20px 0; border-radius: 10px; border: 1px solid #dee2e6;">
-                        <p><strong>Note:</strong> The project budget includes typical IT project costs such as:</p>
-                        <ul style="text-align: left; margin-top: 15px; color: #495057;">
-                            <li>Development tools and software licenses</li>
-                            <li>Hosting and infrastructure costs</li>
-                            <li>Testing resources and tools</li>
-                            <li>Training and documentation materials</li>
-                            <li>Contingency reserves (10-15%)</li>
-                        </ul>
-                    </div>
-                </div>
-            `;
-            
-            budgetLoading.style.display = 'none';
-            budgetContent.style.display = 'block';
-        }
-
-        // Smooth scrolling for table of contents links
         document.querySelectorAll('.toc a').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href').substring(1);
                 const targetSection = document.getElementById(targetId);
-                
-                // Expand the target section if it's collapsed
                 if (targetSection.classList.contains('collapsed')) {
                     targetSection.classList.remove('collapsed');
                 }
-                
-                // Scroll to the section
                 targetSection.scrollIntoView({
                     behavior: 'smooth'
                 });
             });
         });
 
-        // Back to top button functionality
         function scrollToTop() {
             window.scrollTo({
                 top: 0,
@@ -2127,15 +1989,54 @@
             });
         }
 
-        // Show/hide back to top button based on scroll position
         window.addEventListener('scroll', function() {
             const backToTopButton = document.getElementById('backToTop');
             const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-            
             if (scrollPosition > 300) {
                 backToTopButton.classList.add('visible');
             } else {
                 backToTopButton.classList.remove('visible');
+            }
+        });
+        
+        const mouseGlow = document.getElementById('mouseGlow');
+        
+        document.addEventListener('mousemove', function(e) {
+            mouseGlow.style.left = e.clientX + 'px';
+            mouseGlow.style.top = e.clientY + 'px';
+        });
+        
+        let trails = [];
+        const maxTrails = 15;
+        
+        document.addEventListener('mousemove', function(e) {
+            const trail = document.createElement('div');
+            trail.className = 'cursor-trail';
+            
+            const colors = ['#667eea', '#764ba2', '#f093fb', '#4facfe'];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            trail.style.background = randomColor;
+            
+            trail.style.left = e.clientX - 10 + 'px';
+            trail.style.top = e.clientY - 10 + 'px';
+            
+            document.body.appendChild(trail);
+            trails.push(trail);
+            
+            setTimeout(() => {
+                trail.classList.add('active');
+            }, 10);
+            
+            setTimeout(() => {
+                trail.remove();
+                trails.shift();
+            }, 1000);
+            
+            if (trails.length > maxTrails) {
+                const oldTrail = trails.shift();
+                if (oldTrail && oldTrail.parentNode) {
+                    oldTrail.remove();
+                }
             }
         });
     </script>
