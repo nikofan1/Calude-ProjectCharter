@@ -7,18 +7,19 @@
 <title>Entry Level I.T Position- Project Charter</title>
 <style>
         :root {
-            --bg-primary: linear-gradient(135fdeg, #667eea 0%, #764ba2 100%);
-            --bg-container: rgba(255, 255, 255, 0.95);
-            --bg-header: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-            --bg-content: white;
-            --text-primary: #333;
-            --text-secondary: #555;
-            --text-light: #666;
-            --border-color: #e0e0e0;
-            --shadow: rgba(0, 0, 0, 0.1);
-            --table-hover: #f8f9fa;
-            --table-stripe: #f9f9f9;
-        }
+    --bg-primary: linear-gradient(135deg, #e8f6ff 0%, #dff3ff 50%, #d6f0ff 100%);
+    --bg-container: rgba(245, 250, 255, 0.85);
+    --bg-header: linear-gradient(135deg, #cfe9ff 0%, #b3e5fc 100%);
+    --bg-content: rgba(240, 246, 252, 0.90);
+    --text-primary: #243447;
+    --text-secondary: #38566b;
+    --text-light: #6b8a9c;
+    --border-color: #d8ebf7;
+    --shadow: rgba(24, 72, 98, 0.12);
+    --table-hover: #f1f9ff;
+    --table-stripe: #f5fbff;
+}
+
 
         [data-theme="dark"] {
             --bg-primary: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
@@ -35,9 +36,19 @@
         }
 
         @keyframes gradientShift {
-            0% {
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            }
+  0%   { background: radial-gradient(1200px 800px at 50% 10%, #00131f 0%, #001a2b 30%, #001e33 55%, #021a2a 100%); }
+  25%  { background: radial-gradient(1200px 800px at 55% 12%, #00121c 0%, #001a2b 30%, #04233d 55%, #021a2a 100%); }
+  50%  { background: radial-gradient(1200px 800px at 50% 8%,  #00131f 0%, #001d30 30%, #05314f 55%, #021a2a 100%); }
+  75%  { background: radial-gradient(1200px 800px at 45% 12%, #00121c 0%, #001a2b 30%, #062b46 55%, #021a2a 100%); }
+  100% { background: radial-gradient(1200px 800px at 50% 10%, #00131f 0%, #001a2b 30%, #001e33 55%, #021a2a 100%); }
+}
+
+  25%  { background: linear-gradient(135deg, #97c1e3 0%, #8bb4dc 100%); }
+  50%  { background: linear-gradient(135deg, #cfe9ff 0%, #bfefff 100%); }
+  75%  { background: linear-gradient(135deg, #86aed8 0%, #a3d3e9 100%); }
+  100% { background: linear-gradient(135deg, #8fbde2 0%, #b8dcf4 100%); }
+}
+
             25% {
                 background: linear-gradient(135deg, #764ba2 0%, #f093fb 100%);
             }
@@ -53,9 +64,25 @@
         }
 
         [data-theme="dark"] @keyframes gradientShift {
-            0% {
-                background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            }
+  0%   { background: radial-gradient(1200px 800px at 50% 10%, #00131f 0%, #001a2b 30%, #001e33 55%, #021a2a 100%); }
+  25%  { background: radial-gradient(1200px 800px at 55% 12%, #00121c 0%, #001a2b 30%, #04233d 55%, #021a2a 100%); }
+  50%  { background: radial-gradient(1200px 800px at 50% 8%,  #00131f 0%, #001d30 30%, #05314f 55%, #021a2a 100%); }
+  75%  { background: radial-gradient(1200px 800px at 45% 12%, #00121c 0%, #001a2b 30%, #062b46 55%, #021a2a 100%); }
+  100% { background: radial-gradient(1200px 800px at 50% 10%, #00131f 0%, #001a2b 30%, #001e33 55%, #021a2a 100%); }
+}
+
+  25%  { background: linear-gradient(135deg, #0f2a3a 0%, #103247 100%); }
+  50%  { background: linear-gradient(135deg, #103247 0%, #134155 100%); }
+  75%  { background: linear-gradient(135deg, #134155 0%, #16506a 100%); }
+  100% { background: linear-gradient(135deg, #16506a 0%, #0c1b2a 100%); }
+}
+
+  25%  { background: linear-gradient(135deg, #97c1e3 0%, #8bb4dc 100%); }
+  50%  { background: linear-gradient(135deg, #cfe9ff 0%, #bfefff 100%); }
+  75%  { background: linear-gradient(135deg, #86aed8 0%, #a3d3e9 100%); }
+  100% { background: linear-gradient(135deg, #8fbde2 0%, #b8dcf4 100%); }
+}
+
             25% {
                 background: linear-gradient(135deg, #16213e 0%, #0f3460 100%);
             }
@@ -78,38 +105,84 @@
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-primary);
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            background-size: 400% 400%;
-            animation: gradientShift 20s ease infinite;
-            min-height: 100vh;
-        }
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background: radial-gradient(1200px 800px at 50% 10%, #00131f 0%, #001a2b 30%, #001e33 55%, #021a2a 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 32s ease-in-out infinite;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+
+/* Frosted glass overlay across the whole page */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(1200px 600px at 10% 10%, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.12) 60%, rgba(255,255,255,0.06) 100%),
+              linear-gradient(180deg, rgba(255,255,255,0.14), rgba(255,255,255,0.06));
+  backdrop-filter: blur(8px) saturate(120%);
+  -webkit-backdrop-filter: blur(8px) saturate(120%);
+  pointer-events: none;
+  z-index: 0;
+}
+
         
         [data-theme="dark"] body {
-            animation: gradientShift 25s ease infinite;
-        }
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background: radial-gradient(1200px 800px at 50% 10%, #00131f 0%, #001a2b 30%, #001e33 55%, #021a2a 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 32s ease-in-out infinite;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+
+/* Frosted glass overlay across the whole page */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(1200px 600px at 10% 10%, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.12) 60%, rgba(255,255,255,0.06) 100%),
+              linear-gradient(180deg, rgba(255,255,255,0.14), rgba(255,255,255,0.06));
+  backdrop-filter: blur(8px) saturate(120%);
+  -webkit-backdrop-filter: blur(8px) saturate(120%);
+  pointer-events: none;
+  z-index: 0;
+}
+
         
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: var(--bg-container);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            box-shadow: 0 20px 40px var(--shadow);
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
+  max-width: 1200px;
+  margin: 0 auto;
+  background: var(--bg-container);
+  backdrop-filter: blur(12px) saturate(120%);
+  -webkit-backdrop-filter: blur(12px) saturate(120%);
+  border-radius: 20px;
+  box-shadow: 0 24px 60px var(--shadow);
+  margin-top: 20px;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 3;
+}
+
+
         
         .header {
-            background: var(--bg-header);
-            color: white;
-            padding: 40px;
-            border-radius: 20px 20px 0 0;
-            text-align: center;
-            position: relative;
-        }
+  background: var(--bg-header);
+  color: #0e2a3a;
+  padding: 40px;
+  border-radius: 20px 20px 0 0;
+  text-align: center;
+  position: relative;
+}
+
 
         .theme-toggle {
             position: absolute;
@@ -135,7 +208,7 @@
         .theme-toggle-slider {
             width: 20px;
             height: 20px;
-            background: white;
+            background: #f2f7fa;
             border-radius: 50%;
             transition: transform 0.3s ease;
             display: flex;
@@ -238,20 +311,22 @@
         }
         
         .section-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 20px 25px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            user-select: none;
-        }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 25px;
+  background: linear-gradient(135deg, #b3e5fc, #cfe9ff);
+  color: #0e2a3a;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
         
         .section-header:hover {
-            background: linear-gradient(135deg, #5a6fd8, #6a4190);
-        }
+  background: linear-gradient(135deg, #a6dcf7, #c3e3ff);
+}
+
         
         .section-header-left {
             display: flex;
@@ -332,7 +407,7 @@
         .project-description {
             font-size: 1.2em;
             color: #555;
-            background: #f8f9fa;
+            background: #edf3f7;
             padding: 25px;
             border-radius: 10px;
             border-left: 4px solid #667eea;
@@ -347,7 +422,7 @@
         }
         
         .vision-card {
-            background: #f8f9fa;
+            background: #edf3f7;
             padding: 25px;
             border-radius: 12px;
             border: 1px solid #e0e0e0;
@@ -429,7 +504,7 @@
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
-            background: white;
+            background: #f2f7fa;
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -449,7 +524,7 @@
         }
         
         .stakeholder-table tr:hover {
-            background: #f8f9fa;
+            background: #edf3f7;
         }
         
         .power-high { color: #dc3545; font-weight: bold; }
@@ -460,7 +535,7 @@
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
-            background: white;
+            background: #f2f7fa;
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -483,7 +558,7 @@
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
-            background: white;
+            background: #f2f7fa;
             font-size: 0.9em;
         }
         
@@ -579,7 +654,7 @@
         .budget-table {
             width: 100%;
             border-collapse: collapse;
-            background: white;
+            background: #f2f7fa;
             border-radius: 10px;
             overflow: hidden;
         }
@@ -599,7 +674,7 @@
         }
         
         .budget-table tr:hover {
-            background: #f8f9fa;
+            background: #edf3f7;
         }
         
         .budget-table tr:nth-child(even) {
@@ -620,14 +695,30 @@
             }
             
             .container {
-                margin: 10px;
-                border-radius: 10px;
-            }
+  max-width: 1200px;
+  margin: 0 auto;
+  background: var(--bg-container);
+  backdrop-filter: blur(12px) saturate(120%);
+  -webkit-backdrop-filter: blur(12px) saturate(120%);
+  border-radius: 20px;
+  box-shadow: 0 24px 60px var(--shadow);
+  margin-top: 20px;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 3;
+}
+
+
             
             .header {
-                padding: 20px;
-                border-radius: 10px 10px 0 0;
-            }
+  background: var(--bg-header);
+  color: #0e2a3a;
+  padding: 40px;
+  border-radius: 20px 20px 0 0;
+  text-align: center;
+  position: relative;
+}
+
             
             .content {
                 padding: 20px;
@@ -677,17 +768,7 @@
             transform: translateY(0);
         }
         
-        .cursor-trail {
-            position: fixed;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-            mix-blend-mode: screen;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
+        
         
         .cursor-trail.active {
             opacity: 0.6;
@@ -706,35 +787,318 @@
         }
         
         .mouse-glow {
-            position: fixed;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 1;
-            background: radial-gradient(circle, rgba(102, 126, 234, 0.15) 0%, transparent 70%);
-            transform: translate(-50%, -50%);
-            transition: opacity 0.3s ease;
-            opacity: 0;
-        }
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(circle, rgba(179, 229, 252, 0.2) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
         
         [data-theme="dark"] .mouse-glow {
-            background: radial-gradient(circle, rgba(102, 126, 234, 0.25) 0%, transparent 70%);
-        }
+  background: radial-gradient(circle, rgba(100, 181, 246, 0.28) 0%, transparent 70%);
+}
+
+
         
         body:hover .mouse-glow {
-            opacity: 1;
-        }
-    </style>
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(circle, rgba(179, 229, 252, 0.2) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+    
+}
+
+
+
+
+
+  70%  { opacity: 0.35; transform: scale(2.1) translate(2px, -2px); }
+  100% { opacity: 0; transform: scale(3) translate(4px, -4px); }
+}
+
+
+/* === Frosted Tech Mountains Layer === */
+#tech-mountains {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 46vh;
+  z-index: 1; /* below .container, above background */
+  pointer-events: none;
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  background-size: cover;
+  opacity: 0.85;
+  filter: drop-shadow(0 0 12px rgba(80, 225, 255, 0.25));
+  will-change: transform;
+  transition: transform 0.2s ease-out;
+}
+
+
+/* ==== Aurora Flow Background ==== */
+#aurora {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0; /* below mountains (#tech-mountains z-index:1), above body bg */
+  overflow: hidden;
+  opacity: 0.85;
+}
+
+#aurora::before {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  background:
+    radial-gradient(60% 40% at 20% 15%, rgba(92, 226, 255, 0.20), rgba(92, 226, 255, 0) 60%),
+    radial-gradient(55% 35% at 80% 20%, rgba(0, 255, 210, 0.16), rgba(0, 255, 210, 0) 60%),
+    radial-gradient(70% 45% at 60% 35%, rgba(120, 180, 255, 0.18), rgba(120, 180, 255, 0) 60%),
+    radial-gradient(80% 60% at 40% 10%, rgba(120, 255, 240, 0.12), rgba(120, 255, 240, 0) 60%);
+  filter: blur(26px) saturate(130%);
+  transform-origin: 50% 30%;
+  animation: auroraDrift 46s ease-in-out infinite alternate;
+}
+
+@keyframes auroraDrift {
+  0%   { transform: translate3d(-2%, -1%, 0) scale(1.05) rotate(0.2deg); filter: blur(26px) saturate(130%) hue-rotate(0deg); }
+  35%  { transform: translate3d(3%, 2%, 0)   scale(1.08) rotate(-0.3deg); filter: blur(28px) saturate(135%) hue-rotate(8deg); }
+  70%  { transform: translate3d(-1%, 3%, 0)  scale(1.06) rotate(0.1deg);  filter: blur(27px) saturate(132%) hue-rotate(-6deg); }
+  100% { transform: translate3d(2%, -2%, 0)  scale(1.07) rotate(-0.2deg); filter: blur(26px) saturate(130%) hue-rotate(4deg); }
+}
+
+
+body { cursor: none; }
+
+
+
+
+@media (pointer: coarse) {
+  /* Hide custom cursor on touch devices */
+  
+  body { cursor: auto; }
+}
+
+/* === Shooting Star Cursor (bright + vivid) === */
+body { cursor: none; }
+
+.shooting-star-head {
+  position: fixed;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle at 40% 40%,
+              rgba(255,255,255,0.95) 0%,
+              rgba(180,220,255,0.9) 35%,
+              rgba(120,180,255,0.0) 75%);
+  box-shadow:
+    0 0 18px rgba(120, 200, 255, 0.9),
+    0 0 36px rgba(90, 220, 255, 0.6),
+    0 0 64px rgba(60, 180, 255, 0.4);
+  mix-blend-mode: screen;
+  filter: hue-rotate(0deg);
+}
+
+.shooting-star-trail {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  background: radial-gradient(circle at 30% 30%,
+              rgba(255,255,255,0.9) 0%,
+              rgba(160,210,255,0.7) 40%,
+              rgba(120,180,255,0.0) 80%);
+  box-shadow:
+    0 0 14px rgba(120, 200, 255, 0.85),
+    0 0 28px rgba(90, 220, 255, 0.55);
+  animation: starFade 0.9s ease-out forwards;
+  mix-blend-mode: screen;
+  will-change: transform, opacity, filter;
+}
+
+@keyframes starFade {
+  0%   { opacity: 1;   transform: translate3d(0,0,0) scale(1); }
+  70%  { opacity: 0.6; transform: translate3d(6px, -6px, 0) scale(1.8); }
+  100% { opacity: 0;   transform: translate3d(14px, -12px, 0) scale(2.6); }
+}
+
+
+/* ==== Gentle Snowfall Layer ==== */
+
+
+
+
+
+}
+
+  50%  { transform: translateX(var(--sway)); }
+  100% { transform: translateX(0); }
+}
+
+  50% { opacity: 1; }
+}
+
+
+/* ==== Gentle Snowfall (pure white, varied shapes) ==== */
+
+.snowflake {
+  position: absolute;
+  top: -12px;
+  width: 6px;
+  height: 6px;
+  pointer-events: none;
+  opacity: 0.95;
+  will-change: transform, opacity;
+  filter: drop-shadow(0 0 6px rgba(255,255,255,0.25));
+  animation-name: fall, sway, spin;
+  animation-timing-function: linear, ease-in-out, ease-in-out;
+  animation-iteration-count: 1, infinite, infinite;
+}
+/* Shape variants */
+.snowflake.v1 { background-image: url("data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2024%2024%27%3E%0A%20%20%3Cg%20fill%3D%27%23FFFFFF%27%20stroke%3D%27%23FFFFFF%27%20stroke-width%3D%270.6%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%20opacity%3D%270.95%27%3E%0A%20%20%20%20%3Cpath%20d%3D%27M12%201.5v21%27/%3E%0A%20%20%20%20%3Cpath%20d%3D%27M1.5%2012h21%27/%3E%0A%20%20%20%20%3Cpath%20d%3D%27M4.2%204.2l15.6%2015.6%27/%3E%0A%20%20%20%20%3Cpath%20d%3D%27M19.8%204.2L4.2%2019.8%27/%3E%0A%20%20%20%20%3Ccircle%20cx%3D%2712%27%20cy%3D%2712%27%20r%3D%272.2%27%20fill%3D%27%23FFFFFF%27/%3E%0A%20%20%3C/g%3E%0A%3C/svg%3E"); background-size: contain; background-repeat: no-repeat; }
+.snowflake.v2 { background-image: url("data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2024%2024%27%3E%0A%20%20%3Cg%20fill%3D%27%23FFFFFF%27%20stroke%3D%27%23FFFFFF%27%20stroke-width%3D%270.6%27%20opacity%3D%270.95%27%3E%0A%20%20%20%20%3Cpolygon%20points%3D%2712%2C2%2020%2C7%2020%2C17%2012%2C22%204%2C17%204%2C7%27/%3E%0A%20%20%20%20%3Cline%20x1%3D%2712%27%20y1%3D%272%27%20x2%3D%2712%27%20y2%3D%2722%27%20stroke%3D%27%23FFFFFF%27/%3E%0A%20%20%20%20%3Cline%20x1%3D%274%27%20y1%3D%277%27%20x2%3D%2720%27%20y2%3D%2717%27%20stroke%3D%27%23FFFFFF%27/%3E%0A%20%20%20%20%3Cline%20x1%3D%2720%27%20y1%3D%277%27%20x2%3D%274%27%20y2%3D%2717%27%20stroke%3D%27%23FFFFFF%27/%3E%0A%20%20%3C/g%3E%0A%3C/svg%3E"); background-size: contain; background-repeat: no-repeat; opacity: 0.9; }
+.snowflake.v3 { background-image: url("data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2024%2024%27%3E%0A%20%20%3Cg%20fill%3D%27%23FFFFFF%27%20stroke%3D%27%23FFFFFF%27%20stroke-width%3D%270.6%27%20opacity%3D%270.95%27%3E%0A%20%20%20%20%3Cpath%20d%3D%27M12%202l2.5%206.5L21%209l-5%204%201.5%206.5L12%2016l-5.5%203.5L8%2013%203%209l6.5-.5L12%202z%27/%3E%0A%20%20%3C/g%3E%0A%3C/svg%3E"); background-size: contain; background-repeat: no-repeat; opacity: 0.92; }
+
+@keyframes fall { to { transform: translateY(110vh); } }
+@keyframes sway { 
+  0%   { transform: translateX(0); }
+  50%  { transform: translateX(var(--sway)); }
+  100% { transform: translateX(0); }
+}
+@keyframes spin {
+  0%   { rotate: 0deg; }
+  100% { rotate: var(--spin); }
+}
+
+
+
+/* ==== Full-Page Festive Snowfall ==== */
+#snow {
+  position: absolute; /* cover entire document, not just viewport */
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%; /* will be set to document height via JS */
+  pointer-events: none;
+  z-index: 2; /* above aurora and mountains, below content container */
+  overflow: visible;
+}
+
+.snowflake {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  pointer-events: none;
+  opacity: 0.97;
+  will-change: transform, opacity;
+  filter: drop-shadow(0 0 6px rgba(255,255,255,0.25));
+  animation-name: fallDoc, swayDoc, spinDoc;
+  animation-timing-function: linear, ease-in-out, ease-in-out;
+  animation-iteration-count: 1, infinite, infinite;
+}
+
+/* shape variants kept from previous version if present */
+.snowflake.v1 { background-size: contain; background-repeat: no-repeat; }
+.snowflake.v2 { background-size: contain; background-repeat: no-repeat; }
+.snowflake.v3 { background-size: contain; background-repeat: no-repeat; }
+
+@keyframes fallDoc { to { transform: translateY(var(--fall-dist)); } }
+@keyframes swayDoc {
+  0%   { transform: translateX(0); }
+  50%  { transform: translateX(var(--sway)); }
+  100% { transform: translateX(0); }
+}
+@keyframes spinDoc {
+  0%   { rotate: 0deg; }
+  100% { rotate: var(--spin); }
+}
+
+
+/* === Snow Pile Layer (bottom accumulation) === */
+#snow-pile {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 160px;
+  z-index: 3; 
+
+
+/* === Icy Blue Glow Layer (bottom reflection) === */
+#icy-glow {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 50vh;
+  z-index: 0.5; /* behind snow pile, above aurora */
+  pointer-events: none;
+  background: radial-gradient(ellipse at center bottom,
+              rgba(140, 220, 255, 0.5) 0%,
+              rgba(110, 210, 255, 0.4) 25%,
+              rgba(80, 190, 255, 0.25) 50%,
+              rgba(50, 160, 255, 0.1) 75%,
+              rgba(0, 140, 255, 0.05) 90%,
+              transparent 100%);
+  filter: blur(18px) brightness(1.05);
+  animation: icyPulse 16s ease-in-out infinite;
+}
+
+@keyframes icyPulse {
+  0%, 100% { opacity: 0.85; filter: blur(18px) brightness(1.05); }
+  50% { opacity: 1; filter: blur(20px) brightness(1.25); }
+}
+
+
+
+
+
+
+
+
+
+/* === Snow Pile Layer (bottom, icy tone) === */
+#snow-pile {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 160px;
+  z-index: 3; /* above icy glow, below content */
+  background: url("data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%201600%20200%27%20preserveAspectRatio%3D%27none%27%3E%0A%20%20%3Cdefs%3E%0A%20%20%20%20%3ClinearGradient%20id%3D%27iceSnow%27%20x1%3D%270%27%20x2%3D%270%27%20y1%3D%270%27%20y2%3D%271%27%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%270%25%27%20stop-color%3D%27rgba%28255%2C255%2C255%2C0.98%29%27/%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%2750%25%27%20stop-color%3D%27rgba%28235%2C245%2C255%2C0.92%29%27/%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%27100%25%27%20stop-color%3D%27rgba%28210%2C230%2C255%2C0.85%29%27/%3E%0A%20%20%20%20%3C/linearGradient%3E%0A%20%20%3C/defs%3E%0A%20%20%3Cpath%20d%3D%27M0%2C150%20C200%2C120%20400%2C170%20600%2C145%20C800%2C120%201000%2C180%201200%2C150%20C1400%2C125%201600%2C160%201600%2C160%20L1600%2C200%20L0%2C200%20Z%27%20fill%3D%27url%28%23iceSnow%29%27%20/%3E%0A%20%20%3Cpath%20d%3D%27M0%2C160%20C250%2C130%20600%2C190%20900%2C160%20C1200%2C130%201600%2C180%201600%2C180%20L1600%2C200%20L0%2C200%20Z%27%0A%20%20%20%20%20%20%20%20fill%3D%27rgba%28255%2C255%2C255%2C0.75%29%27%20/%3E%0A%3C/svg%3E") bottom center / cover no-repeat;
+  pointer-events: none;
+  opacity: 0.97;
+  filter: drop-shadow(0 -2px 6px rgba(180,220,255,0.5));
+}
+</style>
 </head>
-<body class="smooth-scroll">
+<body class="smooth-scroll"><div id="snow"></div><div id="aurora"></div><div id="icy-glow"></div><div id="tech-mountains" style='background-image: url("data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%271600%27%20height%3D%27600%27%20viewBox%3D%270%200%201600%20600%27%3E%0A%20%20%3Cdefs%3E%0A%20%20%20%20%3ClinearGradient%20id%3D%27peak%27%20x1%3D%270%27%20x2%3D%270%27%20y1%3D%270%27%20y2%3D%271%27%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%270%25%27%20stop-color%3D%27%230a3a55%27%20stop-opacity%3D%270.75%27/%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%27100%25%27%20stop-color%3D%27%23041e2d%27%20stop-opacity%3D%270.85%27/%3E%0A%20%20%20%20%3C/linearGradient%3E%0A%20%20%20%20%3Cfilter%20id%3D%27glow%27%3E%0A%20%20%20%20%20%20%3CfeGaussianBlur%20stdDeviation%3D%272%27%20result%3D%27blur%27/%3E%0A%20%20%20%20%20%20%3CfeMerge%3E%0A%20%20%20%20%20%20%20%20%3CfeMergeNode%20in%3D%27blur%27/%3E%0A%20%20%20%20%20%20%20%20%3CfeMergeNode%20in%3D%27blur%27/%3E%0A%20%20%20%20%20%20%20%20%3CfeMergeNode%20in%3D%27SourceGraphic%27/%3E%0A%20%20%20%20%20%20%3C/feMerge%3E%0A%20%20%20%20%3C/filter%3E%0A%20%20%3C/defs%3E%0A%0A%20%20%3C%21--%20Layered%20mountains%3A%20dark%20base%20silhouettes%20--%3E%0A%20%20%3Cg%3E%0A%20%20%20%20%3Cpolygon%20points%3D%27-100%2C600%20200%2C340%20390%2C450%20520%2C360%20690%2C420%20860%2C300%201040%2C420%201180%2C360%201320%2C420%201600%2C310%201700%2C600%27%0A%20%20%20%20%20%20fill%3D%27url%28%23peak%29%27%20stroke%3D%27rgba%2888%2C234%2C255%2C0.4%29%27%20stroke-width%3D%272%27%20filter%3D%27url%28%23glow%29%27/%3E%0A%20%20%20%20%3Cpolygon%20points%3D%27-100%2C600%2080%2C420%20220%2C350%20360%2C410%20520%2C330%20700%2C390%20900%2C260%201080%2C380%201300%2C320%201500%2C380%201700%2C600%27%0A%20%20%20%20%20%20fill%3D%27rgba%286%2C40%2C60%2C0.9%29%27%20stroke%3D%27rgba%2888%2C234%2C255%2C0.35%29%27%20stroke-width%3D%271.6%27%20filter%3D%27url%28%23glow%29%27/%3E%0A%20%20%20%20%3Cpolygon%20points%3D%27-100%2C600%20120%2C470%20240%2C430%20380%2C470%20520%2C420%20660%2C460%20820%2C380%20980%2C430%201180%2C390%201380%2C440%201700%2C600%27%0A%20%20%20%20%20%20fill%3D%27rgba%284%2C28%2C44%2C0.92%29%27%20stroke%3D%27rgba%2888%2C234%2C255%2C0.25%29%27%20stroke-width%3D%271.4%27%20filter%3D%27url%28%23glow%29%27/%3E%0A%20%20%3C/g%3E%0A%0A%20%20%3C%21--%20Wireframe%20accents%20--%3E%0A%20%20%3Cg%20stroke%3D%27%2358eaff%27%20stroke-opacity%3D%270.55%27%20stroke-width%3D%271.2%27%20fill%3D%27none%27%20filter%3D%27url%28%23glow%29%27%3E%0A%20%20%20%20%3Cpolyline%20points%3D%27100%2C500%20240%2C420%20360%2C460%20500%2C400%20650%2C440%20780%2C360%20930%2C410%201100%2C360%201250%2C400%201450%2C360%27%20/%3E%0A%20%20%20%20%3Cpolyline%20points%3D%27-20%2C560%20120%2C500%20240%2C520%20380%2C480%20520%2C510%20680%2C470%20840%2C490%201000%2C450%201180%2C480%201360%2C430%201600%2C460%27%20/%3E%0A%20%20%3C/g%3E%0A%0A%20%20%3C%21--%20Horizon%20glow%20--%3E%0A%20%20%3Crect%20x%3D%270%27%20y%3D%27520%27%20width%3D%271600%27%20height%3D%2780%27%20fill%3D%27url%28%23peak%29%27%20opacity%3D%270.8%27/%3E%0A%3C/svg%3E");'></div>
 <div class="mouse-glow" id="mouseGlow"></div>
 <div class="container">
 <div class="header">
 <button class="theme-toggle" onclick="toggleTheme()" title="Toggle day/night theme">
 <div class="theme-toggle-slider"></div>
 </button>
-<h1>Entry-Level I.T Position</h1>
+<h1>Entry-level I.T Position</h1>
 <p style="font-size: 1.2em; opacity: 0.9;">Project Charter - Managing IT Projects Course</p>
 <div class="student-info">
 <div class="info-item">
@@ -1771,6 +2135,213 @@
             }
         });
     </script>
-</body>
+<script>
+// === Tech Mountains Parallax ===
+(function() {
+  const layer = document.getElementById('tech-mountains');
+  if (!layer) return;
+  let w = window.innerWidth, h = window.innerHeight;
+  window.addEventListener('resize', () => { w = window.innerWidth; h = window.innerHeight; }, { passive: true });
+  window.addEventListener('mousemove', (e) => {
+    const x = (e.clientX / w - 0.5) * 8;  // -4px to 4px
+    const y = (e.clientY / h - 0.5) * 4;  // -2px to 2px
+    layer.style.transform = `translate(${x}px, ${y}px)`;
+  }, { passive: true });
+})();
+</script><script>
+// === Shooting Star Cursor Script ===
+(function() {
+  const head = document.createElement('div');
+  head.className = 'shooting-star-head';
+  document.body.appendChild(head);
+
+  let x = window.innerWidth/2, y = window.innerHeight/2;
+  let tx = x, ty = y;
+  let vx = 0, vy = 0;
+  const followEase = 0.22; // head smoothing (lower = smoother)
+  const trailThrottle = 10; // ms between trail spawns
+  const maxParticles = 140; // performance cap
+  let particles = 0;
+  let last = 0;
+  let hue = 0; // will cycle for vivid color shifts
+
+  function loop() {
+    // Smooth follow for the head
+    const dx = tx - x;
+    const dy = ty - y;
+    vx = dx * followEase;
+    vy = dy * followEase;
+    x += vx;
+    y += vy;
+
+    head.style.left = x + 'px';
+    head.style.top = y + 'px';
+    // Hue shift based on speed + time for vivid effect
+    const speed = Math.hypot(vx, vy);
+    hue = (hue + 0.6 + speed * 10) % 360;
+    head.style.filter = `hue-rotate(${hue}deg)`;
+
+    requestAnimationFrame(loop);
+  }
+  loop();
+
+  // Spawn trail particles along the path
+  function makeTrail(px, py, count) {
+    if (particles >= maxParticles) return;
+    for (let i = 0; i < count; i++) {
+      if (particles >= maxParticles) break;
+      const dot = document.createElement('div');
+      dot.className = 'shooting-star-trail';
+
+      // Varied size and slight offset
+      const size = 6 + Math.random()*10;
+      dot.style.width = size + 'px';
+      dot.style.height = size + 'px';
+
+      // Place slightly behind the head, along opposite of velocity
+      const angle = Math.atan2(vy, vx) + Math.PI; // opposite of motion
+      const dist = 4 + Math.random()*18;
+      const ox = Math.cos(angle) * dist + (Math.random()*6 - 3);
+      const oy = Math.sin(angle) * dist + (Math.random()*6 - 3);
+
+      dot.style.left = (px + ox) + 'px';
+      dot.style.top  = (py + oy) + 'px';
+
+      // Vivid hue shift that matches the head but with variance
+      const shift = (hue + Math.random()*30 - 15);
+      dot.style.filter = `hue-rotate(${shift}deg)`;
+
+      document.body.appendChild(dot);
+      particles++;
+
+      dot.addEventListener('animationend', () => {
+        dot.remove();
+        particles--;
+      });
+    }
+  }
+
+  let lastMoveTime = 0;
+  window.addEventListener('mousemove', (e) => {
+    tx = e.clientX; ty = e.clientY;
+    const now = performance.now();
+    const dt = now - last;
+    if (dt > trailThrottle) {
+      last = now;
+      // Trail density scales with speed (estimate via distance to target)
+      const spd = Math.hypot(tx - x, ty - y);
+      const count = Math.min(8, 2 + Math.floor(spd / 12)); // up to 8 particles per cycle
+      makeTrail(x, y, count);
+    }
+  }, { passive: true });
+
+  // Spark burst on click
+  window.addEventListener('click', () => {
+    for (let i = 0; i < 12; i++) {
+      setTimeout(() => makeTrail(x, y, 2), i * 15);
+    }
+  }, { passive: true });
+
+  // Hide on touch devices
+  if (window.matchMedia('(pointer: coarse)').matches) {
+    head.style.display = 'none';
+    document.body.style.cursor = 'auto';
+  }
+})();
+</script><script>
+// === Full-Page Festive Snowfall (Christmas-movie feel) ===
+(function() {
+  const layer = document.getElementById('snow');
+  if (!layer) return;
+
+  // Helper: document height
+  function docHeight() {
+    const b = document.body, e = document.documentElement;
+    return Math.max(b.scrollHeight, b.offsetHeight, e.clientHeight, e.scrollHeight, e.offsetHeight);
+  }
+
+  // Maintain layer height across changes
+  function syncHeight() {
+    layer.style.height = docHeight() + 'px';
+  }
+  syncHeight();
+  new ResizeObserver(syncHeight).observe(document.documentElement);
+  window.addEventListener('load', syncHeight, { passive: true });
+  window.addEventListener('resize', syncHeight, { passive: true });
+
+  const MAX_FLAKES = 480;        // denser, festive
+  const SPAWN_INTERVAL = 70;     // ms
+  let count = 0;
+
+  function spawnFlake() {
+    if (count >= MAX_FLAKES) return;
+
+    const flake = document.createElement('div');
+    flake.className = 'snowflake';
+
+    // Keep previous SVG backgrounds if defined in CSS (v1/v2/v3 classes added earlier)
+    const v = Math.random();
+    if (v < 0.34) flake.classList.add('v1');
+    else if (v < 0.68) flake.classList.add('v2');
+    else flake.classList.add('v3');
+
+    // Random starting position anywhere along document height (a little above view)
+    const H = layer.clientHeight || docHeight();
+    const startY = -200 + Math.random() * (H + 200); // -200 to H
+    const startX = Math.random() * window.innerWidth;
+
+    // Size and motion
+    const size = 4 + Math.random() * 12;             // 4-16px
+    const sway = (Math.random() * 60 + 20) * (Math.random() < 0.5 ? -1 : 1);
+    const spin = (Math.random() < 0.5 ? -1 : 1) * (180 + Math.random() * 720); // up to two spins
+
+    // Distance to fall until bottom + buffer
+    const fallDist = (H - startY) + 240; // ensure it exits screen
+
+    // Speed: pixels per second (varied)
+    const pps = 45 + Math.random() * 85;             // 45-130 px/s
+    const duration = Math.max(10, fallDist / pps);   // seconds
+
+    // Sway & spin durations
+    const swayDur = 4 + Math.random() * 4;           // 4-8s
+    const spinDur = 8 + Math.random() * 10;          // 8-18s
+
+    // Apply styles
+    flake.style.width = size + 'px';
+    flake.style.height = size + 'px';
+    flake.style.left = startX + 'px';
+    flake.style.top = startY + 'px';
+    flake.style.setProperty('--fall-dist', fallDist + 'px');
+    flake.style.setProperty('--sway', sway + 'px');
+    flake.style.setProperty('--spin', spin + 'deg');
+    flake.style.animationDuration = duration + 's, ' + swayDur + 's, ' + spinDur + 's';
+    flake.style.animationDelay = '0s, ' + (Math.random()*2) + 's, ' + (Math.random()*2) + 's';
+
+    layer.appendChild(flake);
+    count++;
+
+    flake.addEventListener('animationend', (e) => {
+      if (e.animationName === 'fallDoc') {
+        flake.remove();
+        count--;
+      }
+    });
+  }
+
+  // Seed initial snow across the whole page
+  const initial = Math.min(260, Math.floor(MAX_FLAKES * 0.6));
+  for (let i = 0; i < initial; i++) {
+    setTimeout(spawnFlake, i * 20);
+  }
+
+  // Continuous spawning
+  const timer = setInterval(spawnFlake, SPAWN_INTERVAL);
+
+  // Clean up on page hide
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) { /* could pause if desired */ }
+  });
+})();
+</script><div id="snow-pile"></div></body>
 </html>
 </index.html>
